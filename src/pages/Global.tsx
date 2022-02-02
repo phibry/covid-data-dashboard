@@ -1,5 +1,10 @@
 const Global = () => {
-  return <div>Global</div>;
+  return (
+    <>
+      <h1 className='title-medium'>Global</h1>
+      <p>hello</p>
+    </>
+  );
 };
 
 export default Global;

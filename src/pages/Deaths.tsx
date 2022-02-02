@@ -1,5 +1,10 @@
 const Deaths = () => {
-  return <div>Deaths</div>;
+  return (
+    <>
+      <h1 className='title-medium'>Deaths</h1>
+      <p>hello</p>
+    </>
+  );
 };
 
 export default Deaths;

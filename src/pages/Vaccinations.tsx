@@ -1,5 +1,10 @@
 const Vaccinations = () => {
-  return <div>Vaccinations</div>;
+  return (
+    <>
+      <h1 className='title-medium'>Vaccinations</h1>
+      <p>hello</p>
+    </>
+  );
 };
 
 export default Vaccinations;

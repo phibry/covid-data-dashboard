@@ -1,8 +1,9 @@
 const Cases = () => {
   return (
-    <div className='container'>
-      <div>Cases</div>
-    </div>
+    <>
+      <h1 className='title-medium'>Cases</h1>
+      <p>hello</p>
+    </>
   );
 };
 
