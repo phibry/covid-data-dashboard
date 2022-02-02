@@ -1,32 +1,56 @@
+:root {
+  // dark colors
+  --polar-night-1: #2E3440;
+  --polar-night-2: #3B4252;
+  --polar-night-3: #434C5E;
+  --polar-night-4: #4C566A;
+
+  // light colors
+  --snow-storm-1: #D8DEE9;
+  --snow-storm-2: #E5E9F0;
+  --snow-storm-3: #ECEFF4;
+
+  // blueish colors
+  --frost-1: #8FBCBB;
+  --frost-2: #88C0D0;
+  --frost-3: #81A1C1;
+  --frost-4: #5E81AC;
+
+  // accent colors
+  --aurora-1: #BF616A;
+  --aurora-2: #D08770;
+  --aurora-3: #EBCB8B;
+  --aurora-4: #A3BE8C;
+  --aurora-5: #B48EAD;
+
+  // theme colors
+  --text-color: #4C566A;
+  --text-secondary-color: #4C566A;
+  --bg-color: #FBFBFC;
+  --border-color: var(--snow-storm-2);
+  --hover-color: var(--snow-storm-1);
+
+  // utility
+  --nav-size: 80px;
+}
+
+[data-theme='dark'] {
+  --text-color: #ECEFF4;
+  --text-secondary-color: #7c7f81;
+  --bg-color: #242933;
+  --border-color: #343b49;
+  --hover-color: var(--polar-night-4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--color-snow-storm-3);
-}
-
-:root {
-  --nav-size: 60px;
-  --text-color: #6f6c86;
-
-  --color-polar-night-1: #2E3440;
-  --color-polar-night-2: #3B4252;
-  --color-polar-night-3: #434C5E;
-  --color-polar-night-4: #4C566A;
-
-  --color-snow-storm-1: #D8DEE9;
-  --color-snow-storm-2: #E5E9F0;
-  --color-snow-storm-3: #ECEFF4;
-
-  --color-frost-1: #8FBCBB;
-  --color-frost-2: #88C0D0;
-  --color-frost-3: #81A1C1;
-  --color-frost-4: #5E81AC;
-
-  --color-aurora-1: #BF616A;
-  --color-aurora-2: #D08770;
-  --color-aurora-3: #EBCB8B;
-  --color-aurora-4: #A3BE8C;
-  --color-aurora-5: #B48EAD;
 }
 
 ul {
@@ -36,7 +60,7 @@ ul {
 }
 
 a {
-  color: var(--color-polar-night-4);
+  color: var(--text-secondary-color);
   text-decoration: none;
 }
 
@@ -44,8 +68,13 @@ a {
 .navbar {
   position: fixed;
   height: 100vh;
-  background-color: var(--color-snow-storm-3);
-  border-right: 2px solid var(--color-snow-storm-2);
+  background-color: var(--bg-color);
+  border-right: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+
+  transition: background-color 300ms ease,
+              color 300ms ease;
 
   &-nav {
     width: 100%;
@@ -55,7 +84,8 @@ a {
 
     .nav-item,
     .nav-app-icon-item {
-      width: calc(var(--nav-size) * 0.8);
+      border-right: 3px solid transparent;
+      width: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -64,7 +94,7 @@ a {
       position: relative;
 
       a {
-        --button-size: calc(var(--nav-size) * 0.5);
+        --button-size: calc(var(--nav-size) * 0.375);
         width: var(--button-size);
         height: var(--button-size);
         border-radius: 50%;
@@ -73,16 +103,18 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 300ms;
+
+        transition: background-color 300ms ease,
+                    color 300ms ease;
 
 
         &:hover {
-          background-color: var(--color-snow-storm-1);
+          background-color: var(--hover-color);
         }
 
         svg {
           z-index: 100;
-          fill: var(--text-color);
+          fill: var(--text-secondary-color);
           width: 25px;
           height: 25px;
         }
@@ -100,13 +132,13 @@ a {
           width: var(--button-size);
           height: var(--button-size);
           border-radius: 50%;
-          background-color: var(--color-snow-storm-1);
+          background-color: var(--hover-color);
           transition: all 0.5s ease-out;
           opacity: 0;
         }
 
         &:active::after {
-          --button-active-size: calc(var(--nav-size) * 0.5);
+          --button-active-size: calc(var(--nav-size) * 0.375);
           width: 50px;
           height: 50px;
           opacity: 1;
@@ -114,15 +146,28 @@ a {
         }
 
         &.active {
+          color: var(--text-color);
+          background-color: var(--hover-color);
           svg {
-            fill: var(--color-frost-4);
+            fill: var(--text-color);
           }
         }
+      }
+
+      &-github {
+        a {
+          color: var(--text-color);
+          svg {
+            fill: var(--text-color);
+          }
+        }
+
       }
     }
 
     li.active {
-      border-right: 3px solid var(--color-frost-4);
+      border-right: 3px solid var(--text-color);
+      transition: border-color 300ms ease;
     }
 
     .nav-app-icon-item {
@@ -131,23 +176,74 @@ a {
       a {
         --button-size: calc(var(--button-size) + 20);
         &:hover {
-          background-color: var(--color-snow-storm-3);
+          background-color: var(--bg-color);
         }
 
         svg {
-          fill: var(--color-frost-4);
+          fill: var(--frost-4);
             width: 50px;
             height: 50px;
         }
       }
     }
+
+    &.footer {
+      justify-content: flex-end;
+      margin-bottom: 2rem;
+
+      .nav-item {
+        margin-bottom: 0;
+      }
+
+      .version {
+        color: var(--text-color);
+        margin: 0 auto;
+      }
+    }
   }
 }
 
-.container {
-  margin-left: calc((var(--nav-size) * 0.8) + 2rem + 2px + 3px);
+// utiliy
+.margin-left-nav {
+  margin-left: calc(var(--nav-size) + 2px);
 }
 
+.btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &-theme {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    transition: background-color 300ms ease;
+
+    &:hover {
+      background-color: var(--hover-color);
+    }
+
+    svg {
+      fill: var(--text-color);
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+}
+
+// main
 .main {
   padding-top: 2rem;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  transition: background-color 300ms ease,
+              color 300ms ease;
 }
