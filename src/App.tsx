@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import useLocalStorage from 'use-local-storage';
+import { useContext } from 'react';
 
 // components
 import Navbar from './components/layout/navigation/Navbar';
+import ThemeBtn from './components/layout/themebtn/ThemeBtn';
 
 // pages
 import Home from './pages/Home';
@@ -14,29 +15,16 @@ import Global from './pages/Global';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 
-// icons
-import { RiMoonFill, RiSunFill } from 'react-icons/ri';
+// context
+import ThemeToggleContext from './context/theme/ThemeToggleContext';
 
 function App() {
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [theme, setTheme] = useLocalStorage(
-    'theme',
-    defaultDark ? 'dark' : 'light'
-  );
-
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  };
-
+  const { theme } = useContext(ThemeToggleContext);
   return (
     <div data-theme={theme}>
       <Router>
         <Navbar />
-        <button className='btn btn-theme' onClick={switchTheme}>
-          {theme === 'light' ? <RiMoonFill /> : <RiSunFill />}
-        </button>
-
+        <ThemeBtn />
         <main className='main margin-left-nav'>
           <Routes>
             <Route path='/' element={<Home />} />

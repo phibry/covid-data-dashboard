@@ -2,6 +2,8 @@
 import NavItem from './NavItem';
 import NavAppIconItem from './NavAppIconItem';
 
+import './_navbar.scss';
+
 // icons
 import {
   RiHomeLine,

@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style.scss';
+import './main.scss';
 import App from './App';
+
+// themecontext
+import { ThemeToggleProvidor } from './context/theme/ThemeToggleContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeToggleProvidor>
+      <App />
+    </ThemeToggleProvidor>
   </React.StrictMode>,
   document.getElementById('root')
 );
