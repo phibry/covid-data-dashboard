@@ -4,9 +4,11 @@ import { useContext } from 'react';
 // components
 import Navbar from './components/layout/navbar/Navbar';
 import ThemeBtn from './components/layout/themebtn/ThemeBtn';
+import MobNavBtn from './components/layout/navbar/MobNavBtn';
 
 // pages
 import Home from './pages/Home';
+import Cases from './pages/Cases';
 import Vaccinations from './pages/Vaccinations';
 import Deaths from './pages/Deaths';
 import Hospitalisations from './pages/Hospitalisations';
@@ -20,17 +22,23 @@ import * as PATH from './utils/constants/paths';
 
 // context
 import ThemeToggleContext from './context/theme/ThemeToggleContext';
+import { MobNavigationToggleProvidor } from './context/navigation/MobNavigationToggleContext';
 
 function App() {
   const { theme } = useContext(ThemeToggleContext);
   return (
     <div data-theme={theme}>
       <Router>
-        <Navbar />
-        <ThemeBtn />
-        <main className='main margin-left-nav'>
+        <MobNavigationToggleProvidor>
+          <Navbar />
+          <ThemeBtn />
+          <MobNavBtn />
+        </MobNavigationToggleProvidor>
+
+        <main className='main'>
           <Routes>
             <Route path={PATH.HOME} element={<Home />} />
+            <Route path={PATH.CASES} element={<Cases />} />
             <Route path={PATH.VACCINATIONS} element={<Vaccinations />} />
             <Route path={PATH.DEATHS} element={<Deaths />} />
             <Route path={PATH.HOSPITALISTIONS} element={<Hospitalisations />} />

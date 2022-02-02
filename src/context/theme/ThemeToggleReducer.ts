@@ -3,15 +3,11 @@ export enum ThemeActionType {
 }
 
 type Action = {
-  type: 'SET_THEME';
-  payload: any;
+  type: ThemeActionType.SET_THEME;
+  payload: string;
 };
 
-type State = {
-  theme: any;
-};
-
-const themeReducer = (state: State, action: Action) => {
+const themeToggleReducer = (state: string, action: Action) => {
   switch (action.type) {
     case ThemeActionType.SET_THEME:
       return action.payload;
@@ -21,4 +17,4 @@ const themeReducer = (state: State, action: Action) => {
   }
 };
 
-export default themeReducer;
+export default themeToggleReducer;

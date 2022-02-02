@@ -1,4 +1,5 @@
 export const HOME = '/';
+export const CASES = '/cases';
 export const VACCINATIONS = '/vaccinations';
 export const DEATHS = '/deaths';
 export const HOSPITALISTIONS = '/hospitalisations';

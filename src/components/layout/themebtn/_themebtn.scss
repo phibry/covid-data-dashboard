@@ -17,3 +17,11 @@
     height: 20px;
   }
 }
+
+// media
+@media (max-width: 768px) {
+  .btn-theme {
+    right: 1rem;
+    top: 1rem;
+  }
+}

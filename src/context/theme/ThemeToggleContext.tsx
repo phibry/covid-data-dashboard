@@ -2,15 +2,15 @@ import { createContext, useReducer } from 'react';
 import useLocalStorage from 'use-local-storage';
 
 // reducer
-import { ThemeActionType } from './ThemeReducer';
-import themeReducer from './ThemeReducer';
+import { ThemeActionType } from './ThemeToggleReducer';
+import themeToggleReducer from './ThemeToggleReducer';
 
-type ThemeToggle = {
+type ThemeToggleProps = {
   theme: string;
   setTheme: (theme: string) => void;
 };
 
-const ThemeToggleContext = createContext<Partial<ThemeToggle>>({});
+const ThemeToggleContext = createContext<Partial<ThemeToggleProps>>({});
 
 export const ThemeToggleProvidor: React.FC = ({ children }) => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -21,7 +21,7 @@ export const ThemeToggleProvidor: React.FC = ({ children }) => {
 
   const initialState = themeLS;
 
-  const [state, dispatch] = useReducer(themeReducer, initialState);
+  const [state, dispatch] = useReducer(themeToggleReducer, initialState);
 
   const setTheme = (theme: string) => {
     dispatch({
