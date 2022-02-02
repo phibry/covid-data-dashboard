@@ -1,4 +1,3 @@
-import useLocalStorage from 'use-local-storage';
 import { useContext } from 'react';
 
 // icons
@@ -6,6 +5,9 @@ import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 
 // context
 import ThemeToggleContext from '../../../context/theme/ThemeToggleContext';
+
+// styles
+import './_themebtn.scss';
 
 const ThemeBtn: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeToggleContext);

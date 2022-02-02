@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './main.scss';
+
+// App
 import App from './App';
 
-// themecontext
+// styles
+import './main.scss';
+
+// context
 import { ThemeToggleProvidor } from './context/theme/ThemeToggleContext';
 
 ReactDOM.render(

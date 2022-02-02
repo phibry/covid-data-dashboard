@@ -2,6 +2,10 @@
 import NavItem from './NavItem';
 import NavAppIconItem from './NavAppIconItem';
 
+// constants
+import * as PATH from '../../../utils/constants/paths';
+
+// styles
 import './_navbar.scss';
 
 // icons
@@ -22,13 +26,13 @@ const Navbar: React.FC = () => {
     <nav className='navbar'>
       <ul className='navbar-nav'>
         <NavAppIconItem icon={<MdCoronavirus />} />
-        <NavItem icon={<RiHomeLine />} path='/' />
-        <NavItem icon={<RiSyringeLine />} path='/vaccinations' />
-        <NavItem icon={<RiSkullLine />} path='/deaths' />
-        <NavItem icon={<RiHospitalLine />} path='/hospitalisations' />
-        <NavItem icon={<RiShieldCheckLine />} path='/certificates' />
-        <NavItem icon={<RiGlobalLine />} path='/global' />
-        <NavItem icon={<IoInformation />} path='/about' />
+        <NavItem icon={<RiHomeLine />} path={PATH.HOME} />
+        <NavItem icon={<RiSyringeLine />} path={PATH.VACCINATIONS} />
+        <NavItem icon={<RiSkullLine />} path={PATH.DEATHS} />
+        <NavItem icon={<RiHospitalLine />} path={PATH.HOSPITALISTIONS} />
+        <NavItem icon={<RiShieldCheckLine />} path={PATH.CERTIFICATES} />
+        <NavItem icon={<RiGlobalLine />} path={PATH.GLOBAL} />
+        <NavItem icon={<IoInformation />} path={PATH.ABOUT} />
       </ul>
       <ul className='navbar-nav footer'>
         <li className='nav-item nav-item-github'>

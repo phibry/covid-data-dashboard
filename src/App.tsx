@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 
 // components
-import Navbar from './components/layout/navigation/Navbar';
+import Navbar from './components/layout/navbar/Navbar';
 import ThemeBtn from './components/layout/themebtn/ThemeBtn';
 
 // pages
@@ -14,6 +14,9 @@ import Certificates from './pages/Certificates';
 import Global from './pages/Global';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+
+// constants
+import * as PATH from './utils/constants/paths';
 
 // context
 import ThemeToggleContext from './context/theme/ThemeToggleContext';
@@ -27,15 +30,15 @@ function App() {
         <ThemeBtn />
         <main className='main margin-left-nav'>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/vaccinations' element={<Vaccinations />} />
-            <Route path='/deaths' element={<Deaths />} />
-            <Route path='/hospitalisations' element={<Hospitalisations />} />
-            <Route path='/certificates' element={<Certificates />} />
-            <Route path='/global' element={<Global />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/notfound' element={<NotFound />} />
-            <Route path='/*' element={<NotFound />} />
+            <Route path={PATH.HOME} element={<Home />} />
+            <Route path={PATH.VACCINATIONS} element={<Vaccinations />} />
+            <Route path={PATH.DEATHS} element={<Deaths />} />
+            <Route path={PATH.HOSPITALISTIONS} element={<Hospitalisations />} />
+            <Route path={PATH.CERTIFICATES} element={<Certificates />} />
+            <Route path={PATH.GLOBAL} element={<Global />} />
+            <Route path={PATH.ABOUT} element={<About />} />
+            <Route path={PATH.NOT_FOUND} element={<NotFound />} />
+            <Route path={PATH.ANY} element={<NotFound />} />
             <Route />
           </Routes>
         </main>
