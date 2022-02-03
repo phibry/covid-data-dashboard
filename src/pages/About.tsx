@@ -1,11 +1,17 @@
-import { RiDatabase2Line, RiUser3Line, RiCodeLine } from 'react-icons/ri';
+import {
+  RiDatabase2Line,
+  RiUser3Line,
+  RiCodeLine,
+  RiMailLine,
+} from 'react-icons/ri';
+import { SiTypescript, SiReact, SiD3Dotjs } from 'react-icons/si';
 
 const About = () => {
   return (
     <div className='container'>
-      <h1 className='title-big'>
-        About this Covid19 data visualisation application
-      </h1>
+      <div className='title-about-container'>
+        <h1 className='title-big title-about'>About this application</h1>
+      </div>
       <section className='card-container'>
         <div className='card'>
           <div className='card-content-wrapper'>
@@ -64,30 +70,47 @@ const About = () => {
               >
                 Github profile
               </a>
-              .
+              . This is the first application I have developed using these
+              technologies.
             </p>
           </div>
         </div>
 
         <div className='card'>
           <div className='card-content-wrapper'>
-            <h2 className='card-title'>Lorem ipsum dolor sit amet.</h2>
+            <RiMailLine />
+            <h2 className='card-title'>Hit me up!</h2>
             <p className='card-text'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Doloremque corrupti itaque reprehenderit, hic animi sint? Dolor
-              adipisci hic temporibus! Error eius, repudiandae porro sed vitae
-              eos ipsum rem animi quam.
+              Don't hesitate to ask me anything. If you have any feedback or
+              suggestions, please contact me via email
             </p>
+
+            <a className='card-link' href='mailto:philipp.rieser@gmail.com'>
+              philipp.rieser@gmail.com
+            </a>
           </div>
         </div>
       </section>
 
-      <p className='card-text'></p>
-      {/* <img
-        className='card-img'
-        src='/assets/img/openswissdata-logo.png'
-        alt='openswiss.data logo'
-      /> */}
+      <div className='img-container'>
+        <img
+          className='about-img'
+          src='/assets/img/openswissdata-logo.png'
+          alt='openswiss.data logo'
+        />
+
+        <div className='icon-container'>
+          <span className='icon-react'>
+            <SiReact />
+          </span>
+          <span className='icon-typescript'>
+            <SiTypescript />
+          </span>
+          <span className='icon-d3js'>
+            <SiD3Dotjs />
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

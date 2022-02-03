@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 // icons
 import { RiMoonFill, RiSunFill } from 'react-icons/ri';
@@ -16,6 +16,10 @@ const ThemeBtn: React.FC = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme?.(newTheme);
   };
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   return (
     <button className='btn btn-theme' onClick={switchTheme}>
