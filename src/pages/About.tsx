@@ -1,3 +1,5 @@
+import { RiDatabase2Line, RiUser3Line, RiCodeLine } from 'react-icons/ri';
+
 const About = () => {
   return (
     <div className='container'>
@@ -7,37 +9,62 @@ const About = () => {
       <section className='card-container'>
         <div className='card'>
           <div className='card-content-wrapper'>
+            <RiDatabase2Line />
             <h2 className='card-title'>Data</h2>
             <p className='card-text'>
               This application visualises data for the Covid19 pandemic. The
-              data is provided by opendata.swiss. This is a Swiss public
-              administration that serves as a central portal to provide
-              government data.
+              data is provided by{' '}
+              <a
+                className='card-link-inline'
+                href='https://opendata.swiss/en'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                opendata.swiss
+              </a>
+              . This is a Swiss public administration that serves as a central
+              portal to provide government data.
             </p>
           </div>
         </div>
 
         <div className='card'>
           <div className='card-content-wrapper'>
-            <h2 className='card-title'>Hello</h2>
+            <RiUser3Line />
+            <h2 className='card-title'>Developer</h2>
             <p className='card-text'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-              sunt sequi in quis. Minus vitae reiciendis, est expedita fuga
-              laborum?
+              Hi, my name is Philipp Bryan Rieser and I am a software engineer.
+              I am interested in web development and data visualisation. This
+              application combines both aspects.
             </p>
+
+            <a
+              className='card-link'
+              href='https://www.linkedin.com/in/phibry'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              To my LinkedIn
+            </a>
           </div>
         </div>
 
         <div className='card'>
           <div className='card-content-wrapper'>
-            <h2 className='card-title'>Hola</h2>
+            <RiCodeLine />
+            <h2 className='card-title'>Code</h2>
             <p className='card-text'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
-              reprehenderit temporibus sed, velit laudantium commodi dolorem
-              dignissimos veritatis cupiditate odit, aliquid vitae officia
-              sapiente animi? Voluptatibus quaerat, itaque quas necessitatibus
-              fugiat aspernatur quae dolor, saepe aliquam dolores, rem
-              voluptatem.
+              This application was created with React and Typescript. For the
+              diagrams, d3js was used. The code can be seen on my{' '}
+              <a
+                className='card-link-inline color-2'
+                href='https://github.com/phibry'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Github profile
+              </a>
+              .
             </p>
           </div>
         </div>

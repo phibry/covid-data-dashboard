@@ -111,20 +111,44 @@ h1, h2, h3 {
     .card-content-wrapper {
       margin: 0 auto;
       max-width: 450px;
+
+      svg {
+        margin-bottom: 20px;
+        width: 40px;
+        height: 40px;
+      }
+
+
+      .card-text {
+        line-height: 1.4;
+        font-size: 19px;
+        letter-spacing: 1.3px;
+      }
+
+      .card-link {
+        line-height: 1.4;
+        font-size: 19px;
+        letter-spacing: 1.3px;
+        display: inline-block;
+        padding-top: 20px;
+        color: var(--aurora-2);
+      }
+
+      .card-link-inline {
+        color: var(--aurora-4);
+      }
+
+      .color-2 {
+        color: var(--frost-4);
+      }
+      
     }
-  }
-  .card-text {
-    // width: 350px;
-    line-height: 1.4;
-    font-size: 19px;
-    letter-spacing: 2px;
   }
 }
 
-
 // main
 .main {
-  padding: 6rem 2rem 0 2rem;
+  padding: 2rem 2rem 0 2rem;
   height: 100vh;
   margin-left: var(--nav-size);
   background-color: var(--bg-color);
