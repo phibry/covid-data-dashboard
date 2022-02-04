@@ -1,8 +1,9 @@
-import { search } from '../context/opendataswiss/OpenDataActions';
+import { currentData } from '../context/opendataswiss/OpenDataActions';
 
 const Home = () => {
-  const data = search();
+  // const data = search();
   // console.log(data);
+  currentData();
 
   return (
     <>
