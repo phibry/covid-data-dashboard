@@ -23,34 +23,40 @@ import * as PATH from './utils/constants/paths';
 // context
 import ThemeToggleContext from './context/theme/ThemeToggleContext';
 import { MobNavigationToggleProvidor } from './context/navigation/MobNavigationToggleContext';
+import { OpenZhContextProvidor } from './context/openzh/OpenZhContext';
 
 function App() {
   const { theme } = useContext(ThemeToggleContext);
   return (
     <div data-theme={theme}>
-      <Router>
-        <MobNavigationToggleProvidor>
-          <Navbar />
-          <ThemeBtn />
-          <MobNavBtn />
-        </MobNavigationToggleProvidor>
+      <OpenZhContextProvidor>
+        <Router>
+          <MobNavigationToggleProvidor>
+            <Navbar />
+            <ThemeBtn />
+            <MobNavBtn />
+          </MobNavigationToggleProvidor>
 
-        <main className='main'>
-          <Routes>
-            <Route path={PATH.HOME} element={<Home />} />
-            <Route path={PATH.CASES} element={<Cases />} />
-            <Route path={PATH.VACCINATIONS} element={<Vaccinations />} />
-            <Route path={PATH.DEATHS} element={<Deaths />} />
-            <Route path={PATH.HOSPITALISTIONS} element={<Hospitalisations />} />
-            <Route path={PATH.CERTIFICATES} element={<Certificates />} />
-            <Route path={PATH.GLOBAL} element={<Global />} />
-            <Route path={PATH.ABOUT} element={<About />} />
-            <Route path={PATH.NOT_FOUND} element={<NotFound />} />
-            <Route path={PATH.ANY} element={<NotFound />} />
-            <Route />
-          </Routes>
-        </main>
-      </Router>
+          <main className='main'>
+            <Routes>
+              <Route path={PATH.HOME} element={<Home />} />
+              <Route path={PATH.CASES} element={<Cases />} />
+              <Route path={PATH.VACCINATIONS} element={<Vaccinations />} />
+              <Route path={PATH.DEATHS} element={<Deaths />} />
+              <Route
+                path={PATH.HOSPITALISTIONS}
+                element={<Hospitalisations />}
+              />
+              <Route path={PATH.CERTIFICATES} element={<Certificates />} />
+              <Route path={PATH.GLOBAL} element={<Global />} />
+              <Route path={PATH.ABOUT} element={<About />} />
+              <Route path={PATH.NOT_FOUND} element={<NotFound />} />
+              <Route path={PATH.ANY} element={<NotFound />} />
+              <Route />
+            </Routes>
+          </main>
+        </Router>
+      </OpenZhContextProvidor>
     </div>
   );
 }
