@@ -1,13 +1,15 @@
-import { currentData } from '../context/openzh/OpenZhActions';
+import { useContext } from 'react';
+import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
 
 const Home = () => {
+  const { covidContext } = useContext(OpenDataSwissContext);
   // const data = search();
-  currentData();
 
   return (
     <>
       <h1 className='title-medium'>Home</h1>
-      <p>hello</p>
+      <p>{covidContext?.dataVersion}</p>
+      <p>{covidContext?.sourceDate}</p>
     </>
   );
 };
