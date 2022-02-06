@@ -3,7 +3,6 @@ import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext'
 
 const Home = () => {
   const { covidContext } = useContext(OpenDataSwissContext);
-  // const data = search();
 
   return (
     <>

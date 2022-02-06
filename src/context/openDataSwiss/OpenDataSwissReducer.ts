@@ -13,11 +13,11 @@ export enum OpenDataSwissActionType {
 export type Action =
   | {
       type: OpenDataSwissActionType.GET_DATA;
-      payload: any;
+      payload: any; //TODO:
     }
   | {
       type: OpenDataSwissActionType.GET_DATA_CONTEXT;
-      payload: any;
+      payload: any; //TODO:
     }
   | {
       type: OpenDataSwissActionType.SET_LOADING;
@@ -26,8 +26,6 @@ export type Action =
 type State = {
   covidContext: openDataSwissCovidContext;
   covidData: openDataSwissCovidData;
-  // dataVersion: string | null;
-  // sourceDate: string | null;
   loading: boolean;
 };
 
@@ -42,9 +40,7 @@ const openDataSwissReducer = (state: State, action: Action) => {
       return {
         ...state,
         covidContext: action.payload,
-        // dataVersion: action.payload.dataVersion,
-        // sourceDate: action.payload.sourceDate,
-        // loading: false,
+        loading: false,
       };
     case OpenDataSwissActionType.GET_DATA:
       return {

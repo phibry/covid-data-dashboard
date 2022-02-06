@@ -9,12 +9,15 @@ import './main.scss';
 
 // context
 import { ThemeToggleProvidor } from './context/theme/ThemeToggleContext';
+import { OpenDataSwissProvidor } from './context/openDataSwiss/OpenDataSwissContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeToggleProvidor>
-      <App />
-    </ThemeToggleProvidor>
+    <OpenDataSwissProvidor>
+      <ThemeToggleProvidor>
+        <App />
+      </ThemeToggleProvidor>
+    </OpenDataSwissProvidor>
   </React.StrictMode>,
   document.getElementById('root')
 );
