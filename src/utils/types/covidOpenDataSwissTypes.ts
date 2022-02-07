@@ -1,10 +1,12 @@
 export type openDataSwissCovidContext = {
-  sourceDate: string | null;
-  dataVersion: string | null;
+  sourceDate: string;
+  dataVersion: string;
 };
 
 export type openDataSwissCovidData = {
-  geoRegion: string | null;
-  datum: string | null;
-  entries_diff_last: number | null;
+  geoRegion: string;
+  datum: string;
+  entries_diff_last: number;
+  entries_diff_last_age: number;
+  sumTotal: number;
 };

@@ -20,7 +20,11 @@ import NotFound from './pages/NotFound';
 // constants
 import * as PATH from './utils/constants/paths';
 
-import { getDataVersion } from './context/openDataSwiss/OpenDataSwissActions';
+// actions
+import {
+  getDataVersion,
+  getData,
+} from './context/openDataSwiss/OpenDataSwissActions';
 
 // actiontype
 import { OpenDataSwissActionType } from './context/openDataSwiss/OpenDataSwissReducer';
@@ -36,15 +40,38 @@ function App() {
 
   useEffect(() => {
     const getContext = async () => {
+      // context
       const covidContextData = await getDataVersion?.();
-      dispatch?.({ type: OpenDataSwissActionType.SET_LOADING });
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_CONTEXT,
         payload: covidContextData,
       });
+
+      // cases
+      const covidCases = await getData?.(
+        covidContextData?.dataVersion!,
+        'COVID19Cases_geoRegion'
+      );
+      dispatch?.({
+        type: OpenDataSwissActionType.GET_DATA_CASES,
+        payload: covidCases,
+      });
+
+      // hosp
+      const covidHosp = await getData?.(
+        covidContextData?.dataVersion!,
+        'COVID19Hosp_geoRegion'
+      );
+      dispatch?.({
+        type: OpenDataSwissActionType.GET_DATA_HOSP,
+        payload: covidHosp,
+      });
     };
 
-    getContext();
+    dispatch?.({ type: OpenDataSwissActionType.SET_LOADING });
+    getContext().then(() =>
+      dispatch?.({ type: OpenDataSwissActionType.UNSET_LOADING })
+    );
   }, [dispatch]);
 
   return (
