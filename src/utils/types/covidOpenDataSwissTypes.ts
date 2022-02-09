@@ -20,4 +20,8 @@ export type openDataSwissCovidTotals = {
     entries_diff_last: number;
     sumTotal: number;
   };
+  currentDeaths: {
+    entries_diff_last: number;
+    sumTotal: number;
+  };
 };

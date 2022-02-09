@@ -57,6 +57,16 @@ function App() {
         payload: covidCases,
       });
 
+      // deaths
+      const covidDeaths = await getData?.(
+        covidContextData?.dataVersion,
+        'COVID19Death_geoRegion'
+      );
+      dispatch?.({
+        type: OpenDataSwissActionType.GET_DATA_DEATHS,
+        payload: covidDeaths,
+      });
+
       // hosp
       const covidHosp = await getData?.(
         covidContextData?.dataVersion,
@@ -67,13 +77,19 @@ function App() {
         payload: covidHosp,
       });
 
-      const currentCase = covidCases.pop();
-      const currentHosp = covidHosp.pop();
+      console.log(covidCases);
+      console.log(covidHosp);
+      console.log(covidDeaths);
 
-      dispatch?.({
-        type: OpenDataSwissActionType.GET_DATA_TOTALS,
-        payload: { currentCase, currentHosp },
-      });
+      const currentCase = covidCases[covidCases.length - 1];
+      const currentHosp = covidHosp[covidHosp.length - 1];
+      const currentDeaths = covidDeaths[covidDeaths.length - 1];
+
+      if (currentCase && currentHosp && currentDeaths)
+        dispatch?.({
+          type: OpenDataSwissActionType.GET_DATA_TOTALS,
+          payload: { currentCase, currentHosp, currentDeaths },
+        });
     };
 
     dispatch?.({ type: OpenDataSwissActionType.SET_LOADING });

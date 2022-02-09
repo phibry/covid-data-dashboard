@@ -29,6 +29,12 @@ const Home = () => {
           entries_diff_last={totals?.currentHosp?.entries_diff_last}
           sumTotal={totals?.currentHosp?.sumTotal}
         />
+
+        <Card
+          title={'Deaths'}
+          entries_diff_last={totals?.currentDeaths?.entries_diff_last}
+          sumTotal={totals?.currentDeaths?.sumTotal}
+        />
       </>
     );
   } else {

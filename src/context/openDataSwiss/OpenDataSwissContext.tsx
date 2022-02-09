@@ -14,6 +14,7 @@ import openDataSwissReducer from './OpenDataSwissReducer';
 type OpenDataSwissProps = {
   covidContext: openDataSwissCovidContext;
   covidCases: Array<openDataSwissCovidData>;
+  covidDeaths: Array<openDataSwissCovidData>;
   covidHosp: Array<openDataSwissCovidData>;
   totals: openDataSwissCovidTotals;
   loading: boolean;
@@ -28,6 +29,7 @@ const OpenDataSwissContext = createContext<Partial<OpenDataSwissProps>>({});
 export const OpenDataSwissProvidor: React.FC = ({ children }) => {
   const initialState = {
     covidCases: [] as Array<openDataSwissCovidData>,
+    covidDeaths: [] as Array<openDataSwissCovidData>,
     covidHosp: [] as Array<openDataSwissCovidData>,
     covidContext: {} as openDataSwissCovidContext,
     totals: {} as openDataSwissCovidTotals,
