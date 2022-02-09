@@ -1,3 +1,35 @@
 .card {
-  border: 1px solid #333;
+  // border: 1px solid #333;
+  background: var(--card-bg-color);
+  padding: 1rem;
+  border-radius: 10px;
+
+  &-label{
+    font-size: 1rem;
+    color: var(--text-secondary-color);
+  }
+
+  &-value,
+  &-value-flex {
+    font-size: 1.7rem;
+    padding: 5px 0 25px
+  }
+
+  div:last-child {
+    padding-bottom: 0;
+  }
+
+  &-flex-container {
+    display: flex;
+
+    .card-flex-element {
+      width: 50%;
+      
+
+      .card-value-flex {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }

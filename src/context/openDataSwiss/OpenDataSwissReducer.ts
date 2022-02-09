@@ -3,6 +3,7 @@ import {
   openDataSwissCovidContext,
   openDataSwissCovidData,
   openDataSwissCovidTotals,
+  openDataSwissCovidHospCapacity,
 } from '../../utils/types/covidOpenDataSwissTypes';
 
 export enum OpenDataSwissActionType {
@@ -13,6 +14,7 @@ export enum OpenDataSwissActionType {
   UNSET_LOADING = 'UNSET_LOADING',
   GET_DATA_TOTALS = 'GET_DATA_TOTALS',
   GET_DATA_DEATHS = 'GET_DATA_DEATHS',
+  GET_DATA_HOSP_CAPACITY = 'GET_DATA_HOSP_CAPACITY',
 }
 
 export type Action =
@@ -26,6 +28,10 @@ export type Action =
     }
   | {
       type: OpenDataSwissActionType.GET_DATA_DEATHS;
+      payload: any; //TODO:
+    }
+  | {
+      type: OpenDataSwissActionType.GET_DATA_HOSP_CAPACITY;
       payload: any; //TODO:
     }
   | {
@@ -48,6 +54,7 @@ type State = {
   covidCases: Array<openDataSwissCovidData>;
   covidDeaths: Array<openDataSwissCovidData>;
   covidHosp: Array<openDataSwissCovidData>;
+  covidHospCapacity: Array<openDataSwissCovidHospCapacity>;
   totals: openDataSwissCovidTotals;
   loading: boolean;
 };
@@ -83,6 +90,11 @@ const openDataSwissReducer = (state: State, action: Action) => {
       return {
         ...state,
         covidHosp: action.payload,
+      };
+    case OpenDataSwissActionType.GET_DATA_HOSP_CAPACITY:
+      return {
+        ...state,
+        covidHospCapacity: action.payload,
       };
     case OpenDataSwissActionType.GET_DATA_TOTALS:
       return {

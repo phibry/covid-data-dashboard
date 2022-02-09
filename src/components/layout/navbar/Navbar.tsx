@@ -30,7 +30,6 @@ import {
   RiShieldCheckLine,
   RiShieldCheckFill,
   RiGithubLine,
-  RiCloseLine,
 } from 'react-icons/ri';
 import { IoInformation, IoInformationCircleSharp } from 'react-icons/io5';
 import { MdCoronavirus } from 'react-icons/md';

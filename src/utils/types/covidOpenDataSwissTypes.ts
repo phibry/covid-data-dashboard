@@ -11,17 +11,18 @@ export type openDataSwissCovidData = {
   sumTotal: number;
 };
 
+export type openDataSwissCovidHospCapacity = {
+  geoRegion: string;
+  datum: string;
+  ICU_Covid19Patients: number;
+  ICUPercent_Covid19Patients: number;
+  TotalPercent_Covid19Patients: number;
+  Total_Covid19Patients: number;
+};
+
 export type openDataSwissCovidTotals = {
-  currentCase: {
-    entries_diff_last: number;
-    sumTotal: number;
-  };
-  currentHosp: {
-    entries_diff_last: number;
-    sumTotal: number;
-  };
-  currentDeaths: {
-    entries_diff_last: number;
-    sumTotal: number;
-  };
+  currentCase: openDataSwissCovidData;
+  currentHosp: openDataSwissCovidData;
+  currentDeaths: openDataSwissCovidData;
+  currentHospCapacity: openDataSwissCovidHospCapacity;
 };

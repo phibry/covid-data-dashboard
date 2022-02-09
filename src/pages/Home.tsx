@@ -5,6 +5,7 @@ import { getReadableTimeStamp } from '../utils/dateHelper';
 
 // components
 import Card from '../components/content/card/Card';
+import CardHosp from '../components/content/card/CardHosp';
 
 // context
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
@@ -14,28 +15,48 @@ const Home = () => {
 
   if (!loading && covidContext && covidContext.sourceDate) {
     return (
-      <>
-        <h1 className='title-medium'>Home</h1>
-        <p>Status: {getReadableTimeStamp(covidContext.sourceDate)}h</p>
+      <div className='container'>
+        <div className='title-container'>
+          <h1 className='title-big pt-4'>Home</h1>
+          <span className='title-status'>
+            Status - {getReadableTimeStamp(covidContext.sourceDate)}h
+          </span>
+          <span className='title-source'>
+            Source - Federal Office of Publc Health FOPH - BAG
+          </span>
+        </div>
 
-        <Card
-          title={'Cases'}
-          entries_diff_last={totals?.currentCase?.entries_diff_last}
-          sumTotal={totals?.currentCase?.sumTotal}
-        />
+        <div className='grid-container pt-2'>
+          <Card
+            entriesTitle={'New cases'}
+            sumTitle={'Total cases'}
+            entriesDiffLast={totals?.currentCase?.entries_diff_last}
+            sumTotal={totals?.currentCase?.sumTotal}
+          />
 
-        <Card
-          title={'Hospitalisation'}
-          entries_diff_last={totals?.currentHosp?.entries_diff_last}
-          sumTotal={totals?.currentHosp?.sumTotal}
-        />
+          <Card
+            entriesTitle={'Deaths with the involvement of Covid19'}
+            sumTitle={'Total deaths'}
+            entriesDiffLast={totals?.currentDeaths?.entries_diff_last}
+            sumTotal={totals?.currentDeaths?.sumTotal}
+          />
 
-        <Card
-          title={'Deaths'}
-          entries_diff_last={totals?.currentDeaths?.entries_diff_last}
-          sumTotal={totals?.currentDeaths?.sumTotal}
-        />
-      </>
+          <CardHosp
+            entriesTitle={'New hospitalisations'}
+            sumTitle={'Total hospitalisations'}
+            entriesDiffLast={totals?.currentHosp?.entries_diff_last}
+            sumTotal={totals?.currentHosp?.sumTotal}
+            inHospTitle={'Currently hospitalised'}
+            inHosp={totals?.currentHospCapacity?.Total_Covid19Patients}
+            inHospPercent={
+              totals?.currentHospCapacity?.TotalPercent_Covid19Patients
+            }
+            ICUTitle={'Currently in the ICU'}
+            ICU={totals?.currentHospCapacity?.ICU_Covid19Patients}
+            ICUPercent={totals?.currentHospCapacity?.ICUPercent_Covid19Patients}
+          />
+        </div>
+      </div>
     );
   } else {
     return <div>LOADING</div>;

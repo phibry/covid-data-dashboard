@@ -24,6 +24,7 @@ import * as PATH from './utils/constants/paths';
 import {
   getDataVersion,
   getData,
+  getHospCapacity,
 } from './context/openDataSwiss/OpenDataSwissActions';
 
 // actiontype
@@ -41,16 +42,17 @@ function App() {
   useEffect(() => {
     const getContext = async () => {
       // context
-      const covidContextData = await getDataVersion?.();
+      const covidContextData = await getDataVersion();
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_CONTEXT,
         payload: covidContextData,
       });
 
       // cases
-      const covidCases = await getData?.(
+      const covidCases = await getData(
         covidContextData?.dataVersion,
-        'COVID19Cases_geoRegion'
+        'COVID19Cases_geoRegion',
+        'CHFL'
       );
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_CASES,
@@ -58,9 +60,10 @@ function App() {
       });
 
       // deaths
-      const covidDeaths = await getData?.(
+      const covidDeaths = await getData(
         covidContextData?.dataVersion,
-        'COVID19Death_geoRegion'
+        'COVID19Death_geoRegion',
+        'CHFL'
       );
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_DEATHS,
@@ -68,27 +71,42 @@ function App() {
       });
 
       // hosp
-      const covidHosp = await getData?.(
+      const covidHosp = await getData(
         covidContextData?.dataVersion,
-        'COVID19Hosp_geoRegion'
+        'COVID19Hosp_geoRegion',
+        'CHFL'
       );
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_HOSP,
         payload: covidHosp,
       });
 
-      console.log(covidCases);
-      console.log(covidHosp);
-      console.log(covidDeaths);
+      // hosp capacity
+      const covidHospCapacity = await getHospCapacity(
+        covidContextData?.dataVersion
+      );
+      dispatch?.({
+        type: OpenDataSwissActionType.GET_DATA_HOSP_CAPACITY,
+        payload: covidHospCapacity,
+      });
+
+      // console.log(covidHosp);
 
       const currentCase = covidCases[covidCases.length - 1];
       const currentHosp = covidHosp[covidHosp.length - 1];
+      const currentHospCapacity =
+        covidHospCapacity[covidHospCapacity.length - 1];
       const currentDeaths = covidDeaths[covidDeaths.length - 1];
 
       if (currentCase && currentHosp && currentDeaths)
         dispatch?.({
           type: OpenDataSwissActionType.GET_DATA_TOTALS,
-          payload: { currentCase, currentHosp, currentDeaths },
+          payload: {
+            currentCase,
+            currentHosp,
+            currentDeaths,
+            currentHospCapacity,
+          },
         });
     };
 

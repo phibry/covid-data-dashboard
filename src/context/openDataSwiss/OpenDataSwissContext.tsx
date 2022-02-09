@@ -5,6 +5,7 @@ import {
   openDataSwissCovidContext,
   openDataSwissCovidData,
   openDataSwissCovidTotals,
+  openDataSwissCovidHospCapacity,
 } from '../../utils/types/covidOpenDataSwissTypes';
 import { Action } from './OpenDataSwissReducer';
 
@@ -16,6 +17,7 @@ type OpenDataSwissProps = {
   covidCases: Array<openDataSwissCovidData>;
   covidDeaths: Array<openDataSwissCovidData>;
   covidHosp: Array<openDataSwissCovidData>;
+  covidHospCapacity: Array<openDataSwissCovidHospCapacity>;
   totals: openDataSwissCovidTotals;
   loading: boolean;
   dispatch: React.Dispatch<Action>;
@@ -31,6 +33,7 @@ export const OpenDataSwissProvidor: React.FC = ({ children }) => {
     covidCases: [] as Array<openDataSwissCovidData>,
     covidDeaths: [] as Array<openDataSwissCovidData>,
     covidHosp: [] as Array<openDataSwissCovidData>,
+    covidHospCapacity: [] as Array<openDataSwissCovidHospCapacity>,
     covidContext: {} as openDataSwissCovidContext,
     totals: {} as openDataSwissCovidTotals,
     loading: false,

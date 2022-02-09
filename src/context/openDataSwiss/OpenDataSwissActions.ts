@@ -2,6 +2,7 @@
 import {
   openDataSwissCovidContext,
   openDataSwissCovidData,
+  openDataSwissCovidHospCapacity,
 } from '../../utils/types/covidOpenDataSwissTypes';
 
 const COVID19_ADMIN_URL = 'https://www.covid19.admin.ch/api/data';
@@ -17,12 +18,16 @@ export const getDataVersion = async () => {
   };
 };
 
-export const getData = async (version: string, type: string) => {
+export const getData = async (
+  version: string,
+  type: string,
+  region: string
+) => {
   const dataArray: Array<openDataSwissCovidData> = await (
     await fetch(`${COVID19_ADMIN_URL}/${version}/sources/${type}.json`)
   ).json();
 
-  return dataArray.filter((data) => data.geoRegion === 'CHFL');
+  return dataArray.filter((data) => data.geoRegion === region);
 };
 
 // export const getVacc = async () => {
@@ -33,3 +38,12 @@ export const getData = async (version: string, type: string) => {
 //   ).json();
 //   console.log(dataArray.filter((data) => data.geoRegion === 'CHFL'));
 // };
+
+export const getHospCapacity = async (version: string) => {
+  const dataArray: Array<openDataSwissCovidHospCapacity> = await (
+    await fetch(
+      `${COVID19_ADMIN_URL}/${version}/sources/COVID19HospCapacity_geoRegion.json`
+    )
+  ).json();
+  return dataArray.filter((data) => data.geoRegion === 'CH');
+};

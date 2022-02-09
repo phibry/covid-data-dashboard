@@ -30,6 +30,7 @@
   --bg-color: #FBFBFC;
   --border-color: var(--snow-storm-2);
   --hover-color: var(--snow-storm-1);
+  --card-bg-color: var(--snow-storm-3);
 
   // utility
   --nav-size: 200px;
@@ -42,6 +43,7 @@
   --bg-color: #242933;
   --border-color: #343b49;
   --hover-color: var(--polar-night-4);
+  --card-bg-color: var(--polar-night-1);
 }
 
 * {
@@ -52,7 +54,7 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: background-color 300ms ease;
   background-color: #FBFBFC;
 }
@@ -80,10 +82,12 @@ h1, h2, h3 {
 
 .title-big {
   font-size: 60px;
+  margin-bottom: 0;
 }
 
 .title-medium {
   font-size: 40px;
+  margin-bottom: 0;
 }
 
 .btn {
@@ -211,19 +215,48 @@ h1, h2, h3 {
               margin-left 300ms ease;
 }
 
-// about
 .title-about-container {
   max-width: 50%;
   .title-about {
     display: flex;
     justify-content: center;
-    padding-top: 4rem;
   
     max-width: 450px;
     margin: 0 auto;
   }
 }
 
+.title-status,
+.title-source {
+  color: var(--text-secondary-color);
+}
+
+.title-source {
+  display: block;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  column-gap: 1rem
+}
+
+.pt-2 {
+  padding-top: 2rem;
+}
+
+.pt-4 {
+  padding-top: 4rem;
+}
+
+.badge {
+  font-size: 1rem;
+  color: var(--snow-storm-3);
+  background-color: var(--aurora-5);
+  border-radius: 25px;
+  padding: 3px 4px;
+  margin-left: 10px;
+}
 
 @media (max-width: 1200px) {
   .title-about-container {

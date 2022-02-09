@@ -2,17 +2,19 @@
 import './_card.scss';
 
 type Props = {
-  title: string;
-  entries_diff_last: number | undefined;
+  entriesDiffLast: number | undefined;
   sumTotal: number | undefined;
+  entriesTitle: string;
+  sumTitle: string;
 };
 
 const Card: React.FC<Props> = (props) => {
   return (
     <div className='card'>
-      <div className='card-title'>{props.title}</div>
-      <div className='card-current'>{props.entries_diff_last}</div>
-      <div className='card-total'>{props.sumTotal}</div>
+      <div className='card-label'>{props.entriesTitle}</div>
+      <div className='card-value'>{props.entriesDiffLast}</div>
+      <div className='card-label'>{props.sumTitle}</div>
+      <div className='card-value'>{props.sumTotal}</div>
     </div>
   );
 };
