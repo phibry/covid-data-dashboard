@@ -49,7 +49,7 @@ function App() {
 
       // cases
       const covidCases = await getData?.(
-        covidContextData?.dataVersion!,
+        covidContextData?.dataVersion,
         'COVID19Cases_geoRegion'
       );
       dispatch?.({
@@ -59,12 +59,20 @@ function App() {
 
       // hosp
       const covidHosp = await getData?.(
-        covidContextData?.dataVersion!,
+        covidContextData?.dataVersion,
         'COVID19Hosp_geoRegion'
       );
       dispatch?.({
         type: OpenDataSwissActionType.GET_DATA_HOSP,
         payload: covidHosp,
+      });
+
+      const currentCase = covidCases.pop();
+      const currentHosp = covidHosp.pop();
+
+      dispatch?.({
+        type: OpenDataSwissActionType.GET_DATA_TOTALS,
+        payload: { currentCase, currentHosp },
       });
     };
 

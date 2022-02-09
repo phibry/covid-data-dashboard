@@ -13,7 +13,7 @@ const About = () => {
         <h1 className='title-big title-about'>About this application</h1>
       </div>
       <section className='card-container'>
-        <div className='card'>
+        <div className='card-about'>
           <div className='card-content-wrapper'>
             <RiDatabase2Line />
             <h2 className='card-title'>Data</h2>
@@ -34,7 +34,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className='card'>
+        <div className='card-about'>
           <div className='card-content-wrapper'>
             <RiUser3Line />
             <h2 className='card-title'>Developer</h2>
@@ -55,7 +55,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className='card'>
+        <div className='card-about'>
           <div className='card-content-wrapper'>
             <RiCodeLine />
             <h2 className='card-title'>Code</h2>
@@ -76,7 +76,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className='card'>
+        <div className='card-about'>
           <div className='card-content-wrapper'>
             <RiMailLine />
             <h2 className='card-title'>Hit me up!</h2>

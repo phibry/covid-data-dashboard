@@ -1,45 +1,36 @@
 import { useContext } from 'react';
 
+// utils
 import { getReadableTimeStamp } from '../utils/dateHelper';
+
+// components
+import Card from '../components/content/card/Card';
 
 // context
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
 
 const Home = () => {
-  const { covidContext, covidCases, covidHosp, loading } =
-    useContext(OpenDataSwissContext);
+  const { covidContext, totals, loading } = useContext(OpenDataSwissContext);
 
-  if (!loading) {
-    if (covidContext && covidContext.sourceDate) {
-      return (
-        <>
-          <h1 className='title-medium'>Home</h1>
-          <p>Status: {getReadableTimeStamp(covidContext.sourceDate)}h</p>
+  if (!loading && covidContext && covidContext.sourceDate) {
+    return (
+      <>
+        <h1 className='title-medium'>Home</h1>
+        <p>Status: {getReadableTimeStamp(covidContext.sourceDate)}h</p>
 
-          {/* <div className='card'>
-            <div className='card-title'>Cases</div>
-            <div className='card-current'>
-              {covidCases[covidCases?.length - 1].entries_diff_last}
-            </div>
-            <div className='card-total'>
-              {covidCases[covidCases?.length - 1].sumTotal}
-            </div>
-          </div> */}
+        <Card
+          title={'Cases'}
+          entries_diff_last={totals?.currentCase?.entries_diff_last}
+          sumTotal={totals?.currentCase?.sumTotal}
+        />
 
-          {/* <div className='card'>
-            <div className='card-title'>Hospitalisation</div>
-            <div className='card-current'>
-              {covidHosp[covidHosp?.length - 1].entries_diff_last}
-            </div>
-            <div className='card-total'>
-              {covidHosp[covidHosp?.length - 1].sumTotal}
-            </div>
-          </div> */}
-        </>
-      );
-    } else {
-      return <div>STILL LOADING</div>;
-    }
+        <Card
+          title={'Hospitalisation'}
+          entries_diff_last={totals?.currentHosp?.entries_diff_last}
+          sumTotal={totals?.currentHosp?.sumTotal}
+        />
+      </>
+    );
   } else {
     return <div>LOADING</div>;
   }

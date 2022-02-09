@@ -109,7 +109,7 @@ h1, h2, h3 {
   flex-wrap: wrap;
   margin-top: 100px;
 
-  .card {
+  .card-about {
     flex-basis: 50%;
     max-width: 50%;
 
@@ -233,7 +233,7 @@ h1, h2, h3 {
     }
   }
   .card-container {
-    .card {
+    .card-about {
 
       .card-content-wrapper {
         max-width: 350px;
@@ -257,7 +257,7 @@ h1, h2, h3 {
     }
   }
   .card-container {
-    .card {
+    .card-about {
 
       .card-content-wrapper {
           max-width: 250px;
@@ -281,7 +281,7 @@ h1, h2, h3 {
     }
   }
   .card-container {
-    .card {
+    .card-about {
 
       .card-content-wrapper {
           max-width: 225px;
@@ -317,7 +317,7 @@ h1, h2, h3 {
   .card-container {
     display: block;
     margin-top: 70px;
-    .card {
+    .card-about {
       max-width: 100%;
 
       .card-content-wrapper {

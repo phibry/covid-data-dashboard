@@ -16,16 +16,23 @@ import './_navbar.scss';
 // icons
 import {
   RiHomeLine,
+  RiHomeFill,
   RiVirusLine,
+  RiVirusFill,
   RiSkullLine,
+  RiSkullFill,
   RiSyringeLine,
+  RiSyringeFill,
   RiHospitalLine,
+  RiHospitalFill,
   RiGlobalLine,
+  RiGlobalFill,
   RiShieldCheckLine,
+  RiShieldCheckFill,
   RiGithubLine,
   RiCloseLine,
 } from 'react-icons/ri';
-import { IoInformation } from 'react-icons/io5';
+import { IoInformation, IoInformationCircleSharp } from 'react-icons/io5';
 import { MdCoronavirus } from 'react-icons/md';
 import { useContext } from 'react';
 
@@ -37,35 +44,51 @@ const Navbar: React.FC = () => {
       <CloseBtn />
       <ul className='navbar-nav'>
         <NavAppIconItem icon={<MdCoronavirus />} />
-        <NavItem icon={<RiHomeLine />} path={PATH.HOME} title={TITLE.HOME} />
-        <NavItem icon={<RiVirusLine />} path={PATH.CASES} title={TITLE.CASES} />
+        <NavItem
+          icon={<RiHomeLine />}
+          activeIcon={<RiHomeFill />}
+          path={PATH.HOME}
+          title={TITLE.HOME}
+        />
+        <NavItem
+          icon={<RiVirusLine />}
+          activeIcon={<RiVirusFill />}
+          path={PATH.CASES}
+          title={TITLE.CASES}
+        />
         <NavItem
           icon={<RiSyringeLine />}
+          activeIcon={<RiSyringeFill />}
           path={PATH.VACCINATIONS}
           title={TITLE.VACCINATIONS}
         />
         <NavItem
           icon={<RiSkullLine />}
+          activeIcon={<RiSkullFill />}
           path={PATH.DEATHS}
           title={TITLE.DEATHS}
         />
         <NavItem
           icon={<RiHospitalLine />}
+          activeIcon={<RiHospitalFill />}
           path={PATH.HOSPITALISTIONS}
           title={TITLE.HOSPITALISTIONS}
         />
         <NavItem
           icon={<RiShieldCheckLine />}
+          activeIcon={<RiShieldCheckFill />}
           path={PATH.CERTIFICATES}
           title={TITLE.CERTIFICATES}
         />
         <NavItem
           icon={<RiGlobalLine />}
+          activeIcon={<RiGlobalFill />}
           path={PATH.GLOBAL}
           title={TITLE.GLOBAL}
         />
         <NavItem
           icon={<IoInformation />}
+          activeIcon={<IoInformationCircleSharp />}
           path={PATH.ABOUT}
           title={TITLE.ABOUT}
         />

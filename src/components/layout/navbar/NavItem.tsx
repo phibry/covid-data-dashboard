@@ -10,6 +10,7 @@ import { useContext } from 'react';
 
 type Props = {
   icon: IconBaseProps;
+  activeIcon: IconBaseProps;
   path: string;
   title: string;
 };
@@ -32,7 +33,8 @@ const NavItem: React.FC<Props> = (props) => {
       }`}
     >
       <NavLink to={props.path} onClick={minimizeNav}>
-        {props.icon} <span className='nav-item-title'>{props.title}</span>
+        {location.pathname === props.path ? props.activeIcon : props.icon}{' '}
+        <span className='nav-item-title'>{props.title}</span>
       </NavLink>
     </li>
   );
