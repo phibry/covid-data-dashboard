@@ -25,6 +25,7 @@ import {
   getDataVersion,
   getData,
   getHospCapacity,
+  getVacc,
 } from './context/openDataSwiss/OpenDataSwissActions';
 
 // actiontype
@@ -90,7 +91,14 @@ function App() {
         payload: covidHospCapacity,
       });
 
-      // console.log(covidHosp);
+      // vacc
+      const covidVacc = await getVacc(
+        covidContextData?.dataVersion,
+        'CHFL',
+        'COVID19NotVaccPersons'
+      );
+
+      console.log(covidVacc);
 
       const currentCase = covidCases[covidCases.length - 1];
       const currentHosp = covidHosp[covidHosp.length - 1];

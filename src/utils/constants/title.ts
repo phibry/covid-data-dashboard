@@ -1,4 +1,4 @@
-export const HOME = 'Home';
+export const HOME = 'Dashboard';
 export const CASES = 'Cases';
 export const VACCINATIONS = 'Vaccinations';
 export const DEATHS = 'Deaths';

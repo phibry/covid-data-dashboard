@@ -6,6 +6,7 @@ import { getReadableTimeStamp } from '../utils/dateHelper';
 // components
 import Card from '../components/content/card/Card';
 import CardHosp from '../components/content/card/CardHosp';
+import SpinnerDots from '../components/layout/loader/SpinnerDots';
 
 // context
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
@@ -17,7 +18,7 @@ const Home = () => {
     return (
       <div className='container'>
         <div className='title-container'>
-          <h1 className='title-big pt-4'>Home</h1>
+          <h1 className='title-big pt-4'>Dashboard</h1>
           <span className='title-status'>
             Status - {getReadableTimeStamp(covidContext.sourceDate)}h
           </span>
@@ -28,7 +29,7 @@ const Home = () => {
 
         <div className='grid-container pt-2'>
           <Card
-            entriesTitle={'New cases'}
+            entriesTitle={'New cases (difference to previous day)'}
             sumTitle={'Total cases'}
             entriesDiffLast={totals?.currentCase?.entries_diff_last}
             sumTotal={totals?.currentCase?.sumTotal}
@@ -59,7 +60,7 @@ const Home = () => {
       </div>
     );
   } else {
-    return <div>LOADING</div>;
+    return <SpinnerDots />;
   }
 };
 

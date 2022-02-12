@@ -11,6 +11,16 @@ export type openDataSwissCovidData = {
   sumTotal: number;
 };
 
+export type openDataSwissCovidVacc = {
+  age_group: string;
+  date: string;
+  geoRegion: string;
+  per100PersonsTotal: number;
+  pop: number;
+  sumTotal: number;
+  type: string;
+};
+
 export type openDataSwissCovidHospCapacity = {
   geoRegion: string;
   datum: string;

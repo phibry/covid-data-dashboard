@@ -1,0 +1,58 @@
+.spinner-container {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 4rem);
+
+  .circle {
+    margin: 0 5px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--frost-1);
+
+
+    animation: jump-up 700ms ease-in-out 700ms infinite;
+
+    &.aurora-2 {
+      background-color: var(--aurora-2);
+      animation-delay: 100ms;
+    }
+    &.frost-4 {
+      background-color: var(--frost-4);
+      animation-delay: 200ms;
+    }
+    &.aurora-5 {
+      background-color: var(--aurora-5);
+      animation-delay: 300ms;
+    }
+    &.aurora-4 {
+      background-color: var(--aurora-4);
+      animation-delay: 400ms;
+    }
+  }
+}
+
+
+@keyframes jump-up {
+  0% {
+    transform: translateY(0px);
+    height: 20px;
+  }
+  25% {
+    transform: translateY(50px);
+    height: 30px;
+  }
+  50% {
+    transform: translateY(0px);
+    height: 20px;
+  }
+  75% {
+    transform: translateY(-50px);
+    height: 30px;
+  }
+  100% {
+    transform: translateY(0px);
+    height: 20px;
+  }
+}

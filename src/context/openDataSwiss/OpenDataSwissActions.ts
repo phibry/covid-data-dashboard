@@ -3,6 +3,7 @@ import {
   openDataSwissCovidContext,
   openDataSwissCovidData,
   openDataSwissCovidHospCapacity,
+  openDataSwissCovidVacc,
 } from '../../utils/types/covidOpenDataSwissTypes';
 
 const COVID19_ADMIN_URL = 'https://www.covid19.admin.ch/api/data';
@@ -30,14 +31,23 @@ export const getData = async (
   return dataArray.filter((data) => data.geoRegion === region);
 };
 
-// export const getVacc = async () => {
-//   const dataArray = await (
-//     await fetch(
-//       'https://www.covid19.admin.ch/api/data/20220208-nt02zeik/sources/COVID19VaccPersons_v2.json'
-//     )
-//   ).json();
-//   console.log(dataArray.filter((data) => data.geoRegion === 'CHFL'));
-// };
+export const getVacc = async (
+  version: string,
+  region: string,
+  vaccType: string
+) => {
+  const dataArray: Array<openDataSwissCovidVacc> = await (
+    await fetch(
+      `${COVID19_ADMIN_URL}/${version}/sources/COVID19VaccPersons_v2.json`
+    )
+  ).json();
+  return dataArray.filter(
+    (data) =>
+      data.geoRegion === region &&
+      data.age_group === 'total_population' &&
+      data.type === vaccType
+  );
+};
 
 export const getHospCapacity = async (version: string) => {
   const dataArray: Array<openDataSwissCovidHospCapacity> = await (

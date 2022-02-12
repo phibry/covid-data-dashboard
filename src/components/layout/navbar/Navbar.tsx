@@ -49,42 +49,42 @@ const Navbar: React.FC = () => {
           path={PATH.HOME}
           title={TITLE.HOME}
         />
-        <NavItem
+        {/* <NavItem
           icon={<RiVirusLine />}
           activeIcon={<RiVirusFill />}
           path={PATH.CASES}
           title={TITLE.CASES}
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           icon={<RiSyringeLine />}
           activeIcon={<RiSyringeFill />}
           path={PATH.VACCINATIONS}
           title={TITLE.VACCINATIONS}
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           icon={<RiSkullLine />}
           activeIcon={<RiSkullFill />}
           path={PATH.DEATHS}
           title={TITLE.DEATHS}
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           icon={<RiHospitalLine />}
           activeIcon={<RiHospitalFill />}
           path={PATH.HOSPITALISTIONS}
           title={TITLE.HOSPITALISTIONS}
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           icon={<RiShieldCheckLine />}
           activeIcon={<RiShieldCheckFill />}
           path={PATH.CERTIFICATES}
           title={TITLE.CERTIFICATES}
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           icon={<RiGlobalLine />}
           activeIcon={<RiGlobalFill />}
           path={PATH.GLOBAL}
           title={TITLE.GLOBAL}
-        />
+        /> */}
         <NavItem
           icon={<IoInformation />}
           activeIcon={<IoInformationCircleSharp />}

@@ -20,7 +20,7 @@ type Props = {
 
 const CardHosp: React.FC<Props> = (props) => {
   return (
-    <div className='card'>
+    <div className='card hosp'>
       <div className='card-flex-container'>
         <div className='card-flex-element'>
           <div className='card-label'>{props.entriesTitle}</div>
