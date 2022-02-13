@@ -6,6 +6,10 @@ export type openDataSwissCovidContext = {
 export type openDataSwissCovidData = {
   geoRegion: string;
   datum: string;
+  // datum: string | Date;
+  entries: number;
+  entries_letzter_stand: number;
+  entries_neu_gemeldet: number;
   entries_diff_last: number;
   entries_diff_last_age: number;
   sumTotal: number;

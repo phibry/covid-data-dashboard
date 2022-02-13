@@ -3,7 +3,8 @@ import { useContext } from 'react';
 // utils
 import { getReadableTimeStamp } from '../utils/dateHelper';
 
-// components
+// components$
+import Area from '../components/content/d3/Area';
 import Card from '../components/content/card/Card';
 import CardHosp from '../components/content/card/CardHosp';
 import SpinnerDots from '../components/layout/loader/SpinnerDots';
@@ -12,12 +13,13 @@ import SpinnerDots from '../components/layout/loader/SpinnerDots';
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
 
 const Home = () => {
-  const { covidContext, totals, loading } = useContext(OpenDataSwissContext);
+  const { covidContext, totals, loading, covidCases } =
+    useContext(OpenDataSwissContext);
 
-  if (!loading && covidContext && covidContext.sourceDate) {
+  if (!loading && covidContext && covidContext.sourceDate && covidCases) {
     return (
       <div className='container'>
-        <div className='title-container'>
+        {/* <div className='title-container'>
           <h1 className='title-big pt-4'>Dashboard</h1>
           <span className='title-status'>
             Status - {getReadableTimeStamp(covidContext.sourceDate)}h
@@ -29,7 +31,7 @@ const Home = () => {
 
         <div className='grid-container pt-2'>
           <Card
-            entriesTitle={'New cases (difference to previous day)'}
+            entriesTitle={'New cases'}
             sumTitle={'Total cases'}
             entriesDiffLast={totals?.currentCase?.entries_diff_last}
             sumTotal={totals?.currentCase?.sumTotal}
@@ -56,7 +58,9 @@ const Home = () => {
             ICU={totals?.currentHospCapacity?.ICU_Covid19Patients}
             ICUPercent={totals?.currentHospCapacity?.ICUPercent_Covid19Patients}
           />
-        </div>
+        </div> */}
+
+        <Area data={covidCases} />
       </div>
     );
   } else {

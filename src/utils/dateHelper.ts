@@ -92,5 +92,21 @@ export const getReadableTimeStamp = (dateString: string) => {
   })}`;
 };
 
+export const getReadableDate = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const dateArray = date.toLocaleDateString('de-CH').split('.');
+
+  // if (dateArray !== undefined) {
+  if (dateArray[0].length === 1) dateArray[0] = '0' + dateArray[0];
+  if (dateArray[1].length === 1) dateArray[1] = '0' + dateArray[1];
+  // }
+
+  return `${dateArray.join('.')} ${date.toLocaleTimeString('de-CH', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })}`;
+};
+
 const longMonths = [1, 3, 5, 7, 8, 10, 12];
 const shortMonths = [4, 6, 9, 11];

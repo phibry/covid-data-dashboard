@@ -263,6 +263,16 @@ h1, h2, h3 {
   margin-left: 10px;
 }
 
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.area {
+  fill: lightsteelblue;
+}
+
 @media (max-width: 1200px) {
   .title-about-container {
     .title-about.title-about {

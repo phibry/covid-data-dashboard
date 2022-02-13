@@ -1,5 +1,8 @@
 import ReactTooltip from 'react-tooltip';
 
+// utils
+import { formatBigNumbers } from '../../../utils/numberFormatter';
+
 // styles
 import './_card.scss';
 
@@ -24,14 +27,18 @@ const CardHosp: React.FC<Props> = (props) => {
       <div className='card-flex-container'>
         <div className='card-flex-element'>
           <div className='card-label'>{props.entriesTitle}</div>
-          <div className='card-value'>{props.entriesDiffLast}</div>
+          <div className='card-value'>
+            {props.entriesDiffLast && formatBigNumbers(props.entriesDiffLast)}
+          </div>
           <div className='card-label'>{props.sumTitle}</div>
-          <div className='card-value'>{props.sumTotal}</div>
+          <div className='card-value'>
+            {props.sumTotal && formatBigNumbers(props.sumTotal)}
+          </div>
         </div>
         <div className='card-flex-element'>
           <div className='card-label'>{props.inHospTitle}</div>
           <div className='card-value-flex'>
-            {props.inHosp}{' '}
+            {props.inHosp && formatBigNumbers(props.inHosp)}{' '}
             <span className='badge' data-tip data-for='inHosp'>
               {props.inHospPercent}%
             </span>
@@ -44,7 +51,7 @@ const CardHosp: React.FC<Props> = (props) => {
           </div>
           <div className='card-label'>{props.ICUTitle}</div>
           <div className='card-value-flex'>
-            {props.ICU}{' '}
+            {props.ICU && formatBigNumbers(props.ICU)}{' '}
             <span className='badge' data-tip data-for='inICU'>
               {props.ICUPercent}%
             </span>
