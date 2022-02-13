@@ -13,13 +13,20 @@ import SpinnerDots from '../components/layout/loader/SpinnerDots';
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
 
 const Home = () => {
-  const { covidContext, totals, loading, covidCases } =
+  const { covidContext, totals, loading, covidCases, covidHosp, covidDeaths } =
     useContext(OpenDataSwissContext);
 
-  if (!loading && covidContext && covidContext.sourceDate && covidCases) {
+  if (
+    !loading &&
+    covidContext &&
+    covidContext.sourceDate &&
+    covidCases &&
+    covidHosp &&
+    covidDeaths
+  ) {
     return (
       <div className='container'>
-        {/* <div className='title-container'>
+        <div className='title-container'>
           <h1 className='title-big pt-4'>Dashboard</h1>
           <span className='title-status'>
             Status - {getReadableTimeStamp(covidContext.sourceDate)}h
@@ -58,9 +65,11 @@ const Home = () => {
             ICU={totals?.currentHospCapacity?.ICU_Covid19Patients}
             ICUPercent={totals?.currentHospCapacity?.ICUPercent_Covid19Patients}
           />
-        </div> */}
+        </div>
 
         <Area data={covidCases} />
+        <Area data={covidDeaths} />
+        <Area data={covidHosp} />
       </div>
     );
   } else {

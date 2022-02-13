@@ -16,46 +16,12 @@ const drawAreaChart = (
   svgRef: RefObject<SVGSVGElement>,
   dataArray: Array<Datum>
 ) => {
-  // console.log(data);
-  // const dataArray = [
-  //   {
-  //     // date: 1,
-  //     date: new Date('2022-02-05'),
-  //     value: 18430,
-  //   },
-  //   {
-  //     // date: 2,
-  //     date: new Date('2022-02-06'),
-  //     value: 14627,
-  //   },
-  //   {
-  //     // date: 3,
-  //     date: new Date('2022-02-07'),
-  //     value: 32427,
-  //   },
-  //   {
-  //     // date: 4,
-  //     date: new Date('2022-02-08'),
-  //     value: 26941,
-  //   },
-  //   {
-  //     // date: 5,
-  //     date: new Date('2022-02-09'),
-  //     value: 24268,
-  //   },
-  //   {
-  //     // date: 6,
-  //     date: new Date('2022-02-10'),
-  //     value: 14274,
-  //   },
-  // ];
-
   const svgElem = d3.select(svgRef.current);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 40, right: 20, bottom: 20, left: 40 },
-    width = 1000,
-    height = 500;
+  const margin = { top: 20, right: 2, bottom: 2, left: 2 },
+    width = 200,
+    height = 50;
 
   // set the ranges
   const xScale = d3
@@ -101,8 +67,7 @@ const drawAreaChart = (
       .attr('x2', xScale(mouseDateSnap))
       .attr('y2', height)
       .attr('stroke', '#147F90')
-      .attr('stroke-width', '2px')
-      .attr('fill', '#A6E8F2');
+      .attr('stroke-width', '2px');
 
     svgElem
       .selectAll('.hoverPoint')
@@ -119,8 +84,8 @@ const drawAreaChart = (
 
     svgElem
       .selectAll('.hoverText')
-      .attr('x', 100)
-      .attr('y', 200)
+      .attr('x', 0)
+      .attr('y', 15)
       .text(formatBigNumbers(mouseValue) + ' ' + readableDate);
   };
 
