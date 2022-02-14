@@ -4,18 +4,22 @@
   padding: 1rem;
   border-radius: 10px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   transition: background-color 300ms ease,
   color 300ms ease;
 
-  &-label{
+  .card-label{
     font-size: 1rem;
     color: var(--text-secondary-color);
 
     transition: color 300ms ease;
   }
 
-  &-value,
-  &-value-flex {
+  .card-value,
+  .card-value-flex {
     font-size: 1.7rem;
     padding: 5px 0 25px
   }
@@ -24,7 +28,7 @@
     padding-bottom: 0;
   }
 
-  &-flex-container {
+  .card-flex-container {
     display: flex;
 
     .card-flex-element {

@@ -42,6 +42,7 @@ const Home = () => {
             sumTitle={'Total cases'}
             entriesDiffLast={totals?.currentCase?.entries_diff_last}
             sumTotal={totals?.currentCase?.sumTotal}
+            areaChartData={covidCases}
           />
 
           <Card
@@ -49,6 +50,7 @@ const Home = () => {
             sumTitle={'Total deaths'}
             entriesDiffLast={totals?.currentDeaths?.entries_diff_last}
             sumTotal={totals?.currentDeaths?.sumTotal}
+            areaChartData={covidDeaths}
           />
 
           <CardHosp
@@ -66,10 +68,6 @@ const Home = () => {
             ICUPercent={totals?.currentHospCapacity?.ICUPercent_Covid19Patients}
           />
         </div>
-
-        <Area data={covidCases} />
-        <Area data={covidDeaths} />
-        <Area data={covidHosp} />
       </div>
     );
   } else {

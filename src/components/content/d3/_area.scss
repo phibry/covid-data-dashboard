@@ -1,0 +1,23 @@
+.area-chart-container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+
+  .card-label {
+    margin-bottom: 5px;
+  }
+
+
+  .area-p-value {
+    // height: 31px;
+    font-size: 1.7rem;
+    color: var(--text-hight-contrast-color)
+  }
+  .area-p-date{
+    // height: 31px;
+    font-size: 1rem;
+    color: var(--text-secondary-color)
+  }
+
+
+}

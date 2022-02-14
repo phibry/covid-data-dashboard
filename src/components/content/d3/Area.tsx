@@ -1,9 +1,13 @@
 import * as d3 from 'd3';
+import React, { RefObject, useEffect, useRef } from 'react';
+
 // util
 import { formatBigNumbers } from '../../../utils/numberFormatter';
 // types
 import { openDataSwissCovidData } from '../../../utils/types/covidOpenDataSwissTypes';
-import React, { RefObject, useEffect, useRef } from 'react';
+
+// styles
+import './_area.scss';
 
 type Datum = { date: Date; value: number };
 type Data = Array<Datum>;
@@ -14,12 +18,14 @@ type Props = {
 
 const drawAreaChart = (
   svgRef: RefObject<SVGSVGElement>,
-  dataArray: Array<Datum>
+  dataArray: Array<Datum>,
+  pValueRef: RefObject<HTMLParagraphElement>,
+  pDateRef: RefObject<HTMLParagraphElement>
 ) => {
   const svgElem = d3.select(svgRef.current);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 20, right: 2, bottom: 2, left: 2 },
+  const margin = { top: 10, right: 2, bottom: 2, left: 2 },
     width = 200,
     height = 50;
 
@@ -66,59 +72,90 @@ const drawAreaChart = (
       .attr('y1', margin.top)
       .attr('x2', xScale(mouseDateSnap))
       .attr('y2', height)
-      .attr('stroke', '#147F90')
-      .attr('stroke-width', '2px');
+      .attr('stroke', '#B48EAD')
+      .attr('stroke-width', '3px');
 
     svgElem
       .selectAll('.hoverPoint')
       .attr('cx', xScale(mouseDateSnap))
       .attr('cy', yScale(mouseValue))
       .attr('r', '7')
-      .attr('fill', '#147F90');
+      .attr('fill', '#B48EAD');
 
     const readableDate = mouseDateSnap.toLocaleDateString('de-CH', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
+      year: '2-digit',
     });
 
-    svgElem
-      .selectAll('.hoverText')
-      .attr('x', 0)
-      .attr('y', 15)
-      .text(formatBigNumbers(mouseValue) + ' ' + readableDate);
+    if (pValueRef.current) {
+      pValueRef.current.innerText = formatBigNumbers(mouseValue);
+    }
+
+    if (pDateRef.current) {
+      pDateRef.current.innerText = 'Last 60 days: ' + readableDate;
+    }
+  };
+
+  const mouseOut = (event: React.MouseEvent) => {
+    svgElem.selectAll('.hoverLine').attr('stroke', 'transparent');
+
+    svgElem.selectAll('.hoverPoint').attr('fill', 'transparent');
+
+    if (pValueRef.current) {
+      pValueRef.current.innerText = formatBigNumbers(
+        dataArray[dataArray.length - 1].value
+      );
+    }
+    if (pDateRef.current) {
+      pDateRef.current.innerText =
+        'Last 60 days: ' +
+        dataArray[dataArray.length - 1].date.toLocaleDateString('de-CH', {
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit',
+        });
+    }
   };
 
   // svg
-  svgElem.attr('width', width).attr('height', height);
+  // svgElem.attr('width', width).attr('height', height);
+  svgElem
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .attr('viewBox', '0 0 200 50');
 
   // area
   svgElem
     .append('path')
     .datum<Data>(dataArray)
     .attr('d', area)
-    .attr('stroke', '#147F90')
-    .attr('stroke-width', '2px')
-    .attr('fill', '#A6E8F2');
+    .attr('stroke', '#B48EAD')
+    .attr('stroke-width', '3px')
+    .attr('fill', '#d8bed3');
 
   // interactivity
   svgElem.append('line').classed('hoverLine', true);
   svgElem.append('circle').classed('hoverPoint', true);
-  svgElem.append('text').classed('hoverText', true);
+  // svgElem.append('text').classed('hoverText', true);
 
   svgElem
     .append('rect')
     .attr('fill', 'transparent')
     .attr('x', 0)
     .attr('y', 0)
-    .attr('width', width)
-    .attr('height', height);
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .attr('viewBox', '0 0 200 50');
+  // .attr('width', width)
+  // .attr('height', height);
 
   svgElem.on('mousemove', mouseMove);
+  svgElem.on('mouseout', mouseOut);
 };
 
 const Area: React.FC<Props> = (props) => {
   const svg = useRef<SVGSVGElement>(null);
+  const pValue = useRef<HTMLParagraphElement>(null);
+  const pDate = useRef<HTMLParagraphElement>(null);
 
   const subSet = props.data
     .slice(props.data.length - 60, props.data.length - 1)
@@ -130,10 +167,29 @@ const Area: React.FC<Props> = (props) => {
     });
 
   useEffect(() => {
-    drawAreaChart(svg, subSet);
+    drawAreaChart(svg, subSet, pValue, pDate);
   }, [svg]);
 
-  return <svg id='area-chart' ref={svg}></svg>;
+  return (
+    <div className='area-chart-container'>
+      <p className='card-label area-p-date' ref={pDate}>
+        Last 60 days:{' '}
+        {new Date(props.data[props.data.length - 2].datum).toLocaleDateString(
+          'de-CH',
+          {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+          }
+        )}
+      </p>
+      <p className='area-p-value' ref={pValue}>
+        {props.data[props.data.length - 2].entries}
+      </p>
+
+      <svg className='area-chart' ref={svg}></svg>
+    </div>
+  );
 };
 
 export default Area;
