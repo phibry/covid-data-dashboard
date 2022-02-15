@@ -49,8 +49,9 @@ const drawAreaChart = (
   // interactivity
   const mouseMove = (event: React.MouseEvent) => {
     event.preventDefault();
-    const mouse = d3.pointer(event);
-    const [xCoord, yCoord] = mouse;
+    const mouse = d3.pointers(event);
+
+    const [xCoord, yCoord] = mouse[0];
 
     const mouseDate = xScale.invert(xCoord);
     const mouseDateSnap = d3.timeDay.floor(mouseDate);
@@ -148,8 +149,8 @@ const drawAreaChart = (
   // .attr('width', width)
   // .attr('height', height);
 
-  svgElem.on('mousemove', mouseMove);
-  svgElem.on('mouseout', mouseOut);
+  svgElem.on('mousemove ' + 'touchmove', mouseMove);
+  svgElem.on('mouseout touchend', mouseOut);
 };
 
 const Area: React.FC<Props> = (props) => {
@@ -184,7 +185,7 @@ const Area: React.FC<Props> = (props) => {
         )}
       </p>
       <p className='area-p-value' ref={pValue}>
-        {props.data[props.data.length - 2].entries}
+        {formatBigNumbers(props.data[props.data.length - 2].entries)}
       </p>
 
       <svg className='area-chart' ref={svg}></svg>
