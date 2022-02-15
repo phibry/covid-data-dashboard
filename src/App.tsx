@@ -118,11 +118,11 @@ function App() {
         'COVID19NotVaccPersons'
       );
 
-      console.log(covidAtLeastOneDoesVacc[covidAtLeastOneDoesVacc.length - 1]);
-      console.log(covidFirstBoosterVacc[covidFirstBoosterVacc.length - 1]);
-      console.log(covidFullVacc[covidFullVacc.length - 1]);
-      console.log(covidPartiallyVacc[covidPartiallyVacc.length - 1]);
-      console.log(covidNotVacc[covidNotVacc.length - 1]);
+      // console.log(covidAtLeastOneDoesVacc[covidAtLeastOneDoesVacc.length - 1]);
+      // console.log(covidFirstBoosterVacc[covidFirstBoosterVacc.length - 1]);
+      // console.log(covidFullVacc[covidFullVacc.length - 1]);
+      // console.log(covidPartiallyVacc[covidPartiallyVacc.length - 1]);
+      // console.log(covidNotVacc[covidNotVacc.length - 1]);
 
       const currentCase = covidCases[covidCases.length - 1];
       const currentHosp = covidHosp[covidHosp.length - 1];

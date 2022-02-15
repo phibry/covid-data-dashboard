@@ -8,7 +8,7 @@ import { SiTypescript, SiReact, SiD3Dotjs } from 'react-icons/si';
 
 const About = () => {
   return (
-    <div className='container'>
+    <div className='container about-container'>
       <div className='title-about-container'>
         <h1 className='title-big title-about pt-4'>About this application</h1>
       </div>
