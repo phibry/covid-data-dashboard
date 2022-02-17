@@ -1,3 +1,5 @@
+import { IconBaseProps } from 'react-icons';
+
 // utils
 import { formatBigNumbers } from '../../../utils/numberFormatter';
 
@@ -11,6 +13,9 @@ import Area from '../d3/Area';
 import './_card.scss';
 
 type Props = {
+  icon: IconBaseProps;
+  cardTitle: string;
+
   entriesDiffLast: number | undefined;
   sumTotal: number | undefined;
   entriesTitle: string;
@@ -22,6 +27,12 @@ const Card: React.FC<Props> = (props) => {
   return (
     <div className='card'>
       <div className='card-text-container'>
+        <div className='card-head'>
+          <div className='card-title'>
+            {props.icon} <span>{props.cardTitle}</span>
+          </div>
+        </div>
+
         <div className='card-label'>{props.entriesTitle}</div>
         <div className='card-value'>
           {props.entriesDiffLast && formatBigNumbers(props.entriesDiffLast)}

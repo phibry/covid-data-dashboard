@@ -11,6 +11,26 @@
   transition: background-color 300ms ease,
   color 300ms ease;
 
+  .card-head {
+    padding-bottom: 20px;
+    .card-title {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 40px;
+        height: 40px;
+        fill: var(--text-color);
+      }
+
+      span {
+        font-size: 30px;
+        color: var(--text-color);
+        margin-left: 15px;
+      }
+    }
+  }
+
   .card-label{
     font-size: 1rem;
     color: var(--text-secondary-color);
@@ -41,4 +61,8 @@
       }
     }
   }
+}
+
+.hosp {
+  display: block;
 }

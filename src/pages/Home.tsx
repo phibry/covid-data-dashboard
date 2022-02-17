@@ -3,14 +3,17 @@ import { useContext } from 'react';
 // utils
 import { getReadableTimeStamp } from '../utils/dateHelper';
 
-// components$
-import Area from '../components/content/d3/Area';
+// components
 import Card from '../components/content/card/Card';
 import CardHosp from '../components/content/card/CardHosp';
+import CardVacc from '../components/content/card/CardVacc';
 import SpinnerDots from '../components/layout/loader/SpinnerDots';
 
 // context
 import OpenDataSwissContext from '../context/openDataSwiss/OpenDataSwissContext';
+
+// icons
+import { RiVirusLine, RiSkullLine } from 'react-icons/ri';
 
 const Home = () => {
   const { covidContext, totals, loading, covidCases, covidHosp, covidDeaths } =
@@ -38,6 +41,8 @@ const Home = () => {
 
         <div className='grid-container pt-2'>
           <Card
+            icon={<RiVirusLine />}
+            cardTitle={'Cases'}
             entriesTitle={'New cases'}
             sumTitle={'Total cases'}
             entriesDiffLast={totals?.currentCase?.entries_diff_last}
@@ -46,6 +51,8 @@ const Home = () => {
           />
 
           <Card
+            icon={<RiSkullLine />}
+            cardTitle={'Deaths'}
             entriesTitle={'Deaths with the involvement of Covid19'}
             sumTitle={'Total deaths'}
             entriesDiffLast={totals?.currentDeaths?.entries_diff_last}
@@ -53,20 +60,8 @@ const Home = () => {
             areaChartData={covidDeaths}
           />
 
-          <CardHosp
-            entriesTitle={'New hospitalisations'}
-            sumTitle={'Total hospitalisations'}
-            entriesDiffLast={totals?.currentHosp?.entries_diff_last}
-            sumTotal={totals?.currentHosp?.sumTotal}
-            inHospTitle={'Currently hospitalised'}
-            inHosp={totals?.currentHospCapacity?.Total_Covid19Patients}
-            inHospPercent={
-              totals?.currentHospCapacity?.TotalPercent_Covid19Patients
-            }
-            ICUTitle={'Currently in the ICU'}
-            ICU={totals?.currentHospCapacity?.ICU_Covid19Patients}
-            ICUPercent={totals?.currentHospCapacity?.ICUPercent_Covid19Patients}
-          />
+          <CardHosp />
+          <CardVacc />
         </div>
       </div>
     );
