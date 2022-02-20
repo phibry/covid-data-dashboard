@@ -8,6 +8,7 @@ import { openDataSwissCovidData } from '../../../utils/types/covidOpenDataSwissT
 
 // component
 import Area from '../d3/Area';
+import CardElement from './CardElement';
 
 // styles
 import './_card.scss';
@@ -15,6 +16,7 @@ import './_card.scss';
 type Props = {
   icon: IconBaseProps;
   cardTitle: string;
+  class: string;
 
   entriesDiffLast: number | undefined;
   sumTotal: number | undefined;
@@ -25,7 +27,7 @@ type Props = {
 
 const Card: React.FC<Props> = (props) => {
   return (
-    <div className='card'>
+    <div className={`card ${props.class}`}>
       <div className='card-text-container'>
         <div className='card-head'>
           <div className='card-title'>
@@ -33,14 +35,17 @@ const Card: React.FC<Props> = (props) => {
           </div>
         </div>
 
-        <div className='card-label'>{props.entriesTitle}</div>
-        <div className='card-value'>
-          {props.entriesDiffLast && formatBigNumbers(props.entriesDiffLast)}
-        </div>
-        <div className='card-label'>{props.sumTitle}</div>
-        <div className='card-value'>
-          {props.sumTotal && formatBigNumbers(props.sumTotal)}
-        </div>
+        <CardElement
+          cardElementTitle={props.entriesTitle}
+          value={
+            props.entriesDiffLast && formatBigNumbers(props.entriesDiffLast)
+          }
+        />
+
+        <CardElement
+          cardElementTitle={props.sumTitle}
+          value={props.sumTotal && formatBigNumbers(props.sumTotal)}
+        />
       </div>
 
       <div className='card-chart-container'>

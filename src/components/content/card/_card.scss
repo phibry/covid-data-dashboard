@@ -66,3 +66,55 @@
 .hosp {
   display: block;
 }
+
+.grid-container {
+  .cases {
+    grid-area: cases;
+  }
+  .deaths {
+    grid-area: deaths;
+  }
+  .hosp {
+    grid-area: hosp;
+  }
+  .vacc {
+    grid-area: vacc;
+  }
+
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 250px), 1fr));
+  grid-template-areas: 
+  "cases deaths hosp hosp"
+  "vacc vacc hosp hosp";
+}
+
+@media (max-width: 1200px) {
+
+  .grid-container {
+    grid-template-areas: 
+    "cases deaths"
+    "hosp hosp"
+    "vacc vacc";
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-areas: 
+    "cases"
+    "deaths"
+    "hosp"
+    "vacc";
+  }
+
+  .card {
+    .card-flex-container {
+      flex-direction: column;
+      gap: 3rem;
+  
+      .card-flex-element {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+}

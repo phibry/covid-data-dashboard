@@ -44,6 +44,7 @@ const Home = () => {
             icon={<RiVirusLine />}
             cardTitle={'Cases'}
             entriesTitle={'New cases'}
+            class={'cases'}
             sumTitle={'Total cases'}
             entriesDiffLast={totals?.currentCase?.entries_diff_last}
             sumTotal={totals?.currentCase?.sumTotal}
@@ -53,6 +54,7 @@ const Home = () => {
           <Card
             icon={<RiSkullLine />}
             cardTitle={'Deaths'}
+            class={'deaths'}
             entriesTitle={'Deaths with the involvement of Covid19'}
             sumTitle={'Total deaths'}
             entriesDiffLast={totals?.currentDeaths?.entries_diff_last}
