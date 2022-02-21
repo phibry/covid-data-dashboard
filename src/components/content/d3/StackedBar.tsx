@@ -59,9 +59,9 @@ const drawStackedBarChart = (
   const svgElem = d3.select(svgRef.current);
   svgElem
     .attr('preserveAspectRatio', 'xMinYMin meet')
-    .attr('viewBox', '0 0 300 100')
-    .append('g')
-    .attr('transform', 'translate(' + margin.left + ',' + margin.right + ')');
+    .attr('viewBox', '0 0 300 100');
+  // .append('g')
+  // .attr('transform', 'translate(' + margin.left + ',' + margin.right + ')');
 
   const x = d3
     .scalePoint()
@@ -91,7 +91,7 @@ const StackedBar: React.FC<Props> = (props) => {
   const svg = useRef<SVGSVGElement>(null);
 
   const myConfig: Config = {
-    margin: { top: 2, right: 10, bottom: 20, left: 10 },
+    margin: { top: 2, right: 0, bottom: 20, left: 0 },
     width: 300,
     height: 100,
     barHeight: 50,
