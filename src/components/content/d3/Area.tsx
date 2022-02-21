@@ -48,7 +48,7 @@ const drawAreaChart = (
 
   // interactivity
   const mouseMove = (event: React.MouseEvent) => {
-    event.preventDefault();
+    if (event.cancelable) event.preventDefault();
     const mouse = d3.pointers(event);
 
     const [xCoord, yCoord] = mouse[0];
