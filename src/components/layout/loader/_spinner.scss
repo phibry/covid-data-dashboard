@@ -11,7 +11,8 @@
     height: 20px;
     background-color: var(--frost-1);
 
-    animation: jump-up 1000ms ease-in-out 1000ms infinite;
+    // animation: jump-up 1000ms ease-in-out 1000ms alternate;
+    animation: jump-up 1000ms infinite alternate;
 
     &.aurora-2 {
       background-color: var(--aurora-2);
@@ -32,26 +33,17 @@
   }
 }
 
-
 @keyframes jump-up {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-15px);
     height: 20px;
-  }
-  25% {
-    transform: translateY(50px);
-    height: 30px;
   }
   50% {
-    transform: translateY(0px);
+    transform: translateY(15px);
     height: 20px;
   }
-  75% {
-    transform: translateY(-50px);
-    height: 30px;
-  }
   100% {
-    transform: translateY(0px);
+    transform: translateY(-15px);
     height: 20px;
   }
 }

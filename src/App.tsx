@@ -92,31 +92,31 @@ function App() {
       });
 
       // vacc
-      const covidAtLeastOneDoesVacc = await getVacc(
-        covidContextData?.dataVersion,
-        'CHFL',
-        'COVID19AtLeastOneDosePersons'
-      );
-      const covidFirstBoosterVacc = await getVacc(
-        covidContextData?.dataVersion,
-        'CHFL',
-        'COVID19FirstBoosterPersons'
-      );
-      const covidFullVacc = await getVacc(
-        covidContextData?.dataVersion,
-        'CHFL',
-        'COVID19FullyVaccPersons'
-      );
-      const covidPartiallyVacc = await getVacc(
-        covidContextData?.dataVersion,
-        'CHFL',
-        'COVID19PartiallyVaccPersons'
-      );
-      const covidNotVacc = await getVacc(
-        covidContextData?.dataVersion,
-        'CHFL',
-        'COVID19NotVaccPersons'
-      );
+      // const covidAtLeastOneDoesVacc = await getVacc(
+      //   covidContextData?.dataVersion,
+      //   'CHFL',
+      //   'COVID19AtLeastOneDosePersons'
+      // );
+      // const covidFirstBoosterVacc = await getVacc(
+      //   covidContextData?.dataVersion,
+      //   'CHFL',
+      //   'COVID19FirstBoosterPersons'
+      // );
+      // const covidFullVacc = await getVacc(
+      //   covidContextData?.dataVersion,
+      //   'CHFL',
+      //   'COVID19FullyVaccPersons'
+      // );
+      // const covidPartiallyVacc = await getVacc(
+      //   covidContextData?.dataVersion,
+      //   'CHFL',
+      //   'COVID19PartiallyVaccPersons'
+      // );
+      // const covidNotVacc = await getVacc(
+      //   covidContextData?.dataVersion,
+      //   'CHFL',
+      //   'COVID19NotVaccPersons'
+      // );
 
       // console.log(covidAtLeastOneDoesVacc[covidAtLeastOneDoesVacc.length - 1]);
       // console.log(covidFirstBoosterVacc[covidFirstBoosterVacc.length - 1]);

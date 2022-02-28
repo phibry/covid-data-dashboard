@@ -30,7 +30,7 @@ const Home = () => {
     return (
       <div className='container'>
         <div className='title-container'>
-          <h1 className='title-big pt-4'>Dashboard</h1>
+          <h1 className='title-big pt-dyn'>Dashboard</h1>
           <span className='title-status'>
             Status - {getReadableTimeStamp(covidContext.sourceDate)}h
           </span>
